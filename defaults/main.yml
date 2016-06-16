@@ -5,5 +5,5 @@ ec2describe:
   ansible:
     user: ubuntu
     ssh_key: null
-  results: False 
+  results: null
   debug: True

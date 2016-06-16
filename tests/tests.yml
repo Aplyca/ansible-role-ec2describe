@@ -4,4 +4,5 @@ instances_filter: test
 ec2describe:
   filters:
     test:
-      "tag:Name": "Test instace tag name"
+      "tag:Name": "Test"
+  results: 1

@@ -1,18 +1,13 @@
 ---
-- debug: var=instances_filter
-
 - name: Fail if instances filter is invalid
   fail:
     msg: "Instances filter '{{ instances_filter }}' is not valid. Use [{{ ec2describe.filters | join(', ') }}]"
   when: instances_filter == False or ec2describe.filters[instances_filter] is not defined
   tags: always
 
-- debug: var=ec2describe.filters[instances_filter]
-
 - name: Get instance facts
   ec2_remote_facts:
-    filters:
-      "tag:Name": "Test"
+    filters: "{{ ec2describe.filters[instances_filter] }}"
     region: "{{ ec2describe.region }}"
   register: instances_result
   tags: always
@@ -23,8 +18,8 @@
 
 - name: Fail if instances not present
   fail:
-    msg: "Instances group '{{ instances_filter }}' is not present or more than one"
-  when: ec2describe.results and instances_result.instances|length() != ec2describe.results 
+    msg: "Number of instances in the filter group '{{ instances_filter }}' do not meet the required"
+  when: ec2describe.results and instances_result.instances|length() != ec2describe.results
   tags: always
 
 - name: Add instance to host group
@@ -32,7 +27,6 @@
     hostname: "{{ instances_result.instances.0.id }}.ec2describe"
     groupname: "{{ instances_filter }}.ec2describe"
     ansible_ssh_host: "{{ instances_result.instances.0.public_dns_name }}"
-    ansible_user: "{{ ec2describe.ansible_user }}"
-    ansible_ssh_private_key_file: "{{ ec2describe.ansible_ssh_key }}"    
-  when: ec2describe.results and instances_result.instances|length() != ec2describe.results 
+    ansible_user: "{{ ec2describe.ansible.user }}"
+    ansible_ssh_private_key_file: "{{ ec2describe.ansible.ssh_key }}"
   tags: always
