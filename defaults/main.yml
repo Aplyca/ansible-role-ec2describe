@@ -1,0 +1,9 @@
+---
+ec2describe:
+  filters: null
+  region: us-east-1
+  ansible:
+    user: ubuntu
+    ssh_key: null
+  results: False 
+  debug: True

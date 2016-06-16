@@ -1,0 +1,12 @@
+---
+- name: AWS EC2 describe instances and add them to host group
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_prompt:
+    - name: "instances_filter"
+      prompt: "What is the EC2 instances filter you want to access?"
+      private: no
+      default: "{{ False }}"  
+  roles:
+    - { role: Aplyca.EC2Describe, tags: ["ec2describe"] }
