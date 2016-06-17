@@ -1,7 +1,7 @@
 Ansible Role: EC2 Describe
 ==========================
 
-Ansible Role that describes instances and add them to group hosts to be used in oterhs playbooks.
+Ansible Role that describes instances and add them to hosts group in order to be used in others playbooks.
 
 Requirements
 ------------
