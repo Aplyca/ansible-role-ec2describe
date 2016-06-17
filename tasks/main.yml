@@ -24,9 +24,10 @@
 
 - name: Add instance to host group
   add_host:
-    hostname: "{{ instances_result.instances.0.id }}.ec2describe"
+    hostname: "{{ item.id }}.ec2describe"
     groupname: "{{ instances_filter }}.ec2describe"
-    ansible_ssh_host: "{{ instances_result.instances.0.public_dns_name }}"
+    ansible_ssh_host: "{{ item.public_dns_name }}"
     ansible_user: "{{ ec2describe.ansible.user }}"
     ansible_ssh_private_key_file: "{{ ec2describe.ansible.ssh_key }}"
+  with_items: "{{ instances_result.instances }}"
   tags: always

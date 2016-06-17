@@ -1,16 +1,13 @@
 Ansible Role: EC2 Describe
 ==========================
 
-[![Build Status](https://travis-ci.org/Aplyca/ansible-role-apache.svg?branch=master)](https://travis-ci.org/Aplyca/ansible-role-apache)
-[![Circle CI](https://circleci.com/gh/Aplyca/ansible-role-apache.png?style=badge)](https://circleci.com/gh/Aplyca/ansible-role-apache)
-
-Ansible Role that installs an configure Apache 2.x on Debian/Ubuntu.
+Ansible Role that describes instances and add them to group hosts to be used in oterhs playbooks.
 
 Requirements
 ------------
 
 Use hash behavior for variables in ansible.cfg
-See example: https://github.com/Aplyca/ansible-role-apache/blob/master/tests/ansible.cfg
+See example: https://github.com/Aplyca/ansible-role-ec2describe/blob/master/tests/ansible.cfg
 See official docs: http://docs.ansible.com/intro_configuration.html#hash-behaviour
 
 Installation
@@ -18,18 +15,18 @@ Installation
 
 Using ansible galaxy:
 ```bash
-ansible-galaxy install aplyca.Apache
+ansible-galaxy install aplyca.EC2Describe
 ```
 You can add this role as a dependency for other roles, add the role to the meta/main.yml file of your own role:
 ```yaml
 dependencies:
-  - { role: aplyca.Apache }
+  - { role: aplyca.EC2Describe }
 ```
 
 Role Variables
 --------------
 
-See default variables: https://github.com/Aplyca/ansible-role-apache/blob/master/defaults/main.yml
+See default variables: https://github.com/Aplyca/ansible-role-ec2describe/blob/master/defaults/main.yml
 
 Dependencies
 ------------
@@ -48,8 +45,6 @@ Using Docker:
 ```bash
 tests/docker.sh
 ```
-
-You should see an Apache server on http://localhost:8080
 
 License
 -------
