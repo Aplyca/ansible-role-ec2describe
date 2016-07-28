@@ -10,4 +10,4 @@ test:
   pre:
     - sudo ln -s ansible-role-ec2describe ../Aplyca.EC2Describe
   override:
-    - tests/tests.sh
+    - tests/test.sh

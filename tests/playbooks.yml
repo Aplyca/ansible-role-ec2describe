@@ -1,4 +1,0 @@
----
-- name: Test Apache provision
-  hosts: all
-  gather_facts: no

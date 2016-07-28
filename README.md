@@ -15,12 +15,12 @@ Installation
 
 Using ansible galaxy:
 ```bash
-ansible-galaxy install aplyca.EC2Describe
+ansible-galaxy install Aplyca.EC2Describe
 ```
 You can add this role as a dependency for other roles, add the role to the meta/main.yml file of your own role:
 ```yaml
 dependencies:
-  - { role: aplyca.EC2Describe }
+  - { role: Aplyca.EC2Describe }
 ```
 
 Role Variables
