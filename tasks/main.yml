@@ -12,8 +12,7 @@
   register: instances_result
   tags: always
 
-- debug: var=instances_result
-  when: ec2describe.debug
+- debug: var=instances_result verbosity=1
   tags: vars
 
 - name: Fail if instances not present
