@@ -1,4 +1,7 @@
 ---
+- debug: var=ec2describe verbosity=1
+  tags: vars
+  
 - name: Fail if instances filter is invalid
   fail:
     msg: "Instances filter '{{ instances_filter }}' is not valid. Use [{{ ec2describe.filters | join(', ') }}]"
